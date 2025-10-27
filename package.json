@@ -1,0 +1,28 @@
+{
+  "name": "sf-property",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./build.sh",
+    "serve": "npx serve dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silverfoxsa/sfproperties.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Silverfoxsa/sfproperties/issues"
+  },
+  "homepage": "https://github.com/Silverfoxsa/sfproperties#readme",
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  },
+  "dependencies": {
+    "clean-css-cli": "^5.6.3",
+    "html-minifier": "^4.0.0"
+  }
+}

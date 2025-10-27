@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "testing-fe016"
-  }
+    "default": "sf-properties-86040",
+    "sfproperties": "sf-properties-86040"
+  },
+  "targets": {},
+  "etags": {}
 }

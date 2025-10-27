@@ -17,7 +17,7 @@
         "url": "https://sfproperties.co.za/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://sfproperties.co.za/images/logo.svg",
+          "url": "https://sfproperties.co.za/images/sf-logo.webp",
           "width": 512,
           "height": 180
         },
@@ -59,11 +59,11 @@
         "@type": "LocalBusiness",
         "@id": "https://sfproperties.co.za/#localbusiness",
         "name": "S&F Property Management Solutions (Pty) Ltd",
-        "image": "https://sfproperties.co.za/images/logo.svg",
+        "image": "https://sfproperties.co.za/images/sf-logo.webp",
         "url": "https://sfproperties.co.za/",
         "telephone": "+27-78-226-4253",
         "email": "info@sfproperties.co.za",
-        "priceRange": "R",
+        "priceRange": "R1000-R10000",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "30 Elwyn Road, Penlyn Estate",
@@ -134,12 +134,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.min.css">
   <meta name="robots" content="index, follow">
   <meta name="author" content="S&F Property Management Solutions (Pty) Ltd">
   <meta property="og:title" content="Professional Property Management in Cape Town | S&F Property Management">
   <meta property="og:description" content="We specialize in residential, commercial and retail property management, tenant services and property facilitation.">
-  <meta property="og:image" content="https://sfproperties.co.za/images/logo.svg">
+  <meta property="og:image" content="https://sfproperties.co.za/images/sf-logo.webp">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sfproperties.co.za/">
   <meta name="twitter:card" content="summary_large_image">
@@ -147,52 +148,79 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="images/sf-logo.svg" alt="S&F Property Management Solutions (Pty) Ltd Logo" />
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" class="">Home</a>
-      <a href="about.html" class="active">About Us</a>
-      <a href="contact.html" class="">Contact Us</a>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">Menu</button>
+<div id="header-placeholder"></div>
+<section class="page-header">
+  <h1>About S&F Property Management</h1>
+  <p>Trusted experts in residential and commercial property services across Cape Town.</p>
+</section>
+
+<script>
+  // Load the header dynamically
+  fetch("components/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header-placeholder").innerHTML = html;
+    });
+
+  // --- Event delegation for the hamburger toggle ---
+      document.addEventListener("click", event => {
+        // If the click was on the hamburger button or its icon
+        if (event.target.closest(".menu-toggle")) {
+          const navBar = document.querySelector(".nav-bar");
+          navBar?.classList.toggle("active");
+        }
+
+    // Optional: close menu after clicking a link
+        if (event.target.closest(".nav-links a")) {
+          document.querySelector(".nav-bar")?.classList.remove("active");
+        }
+      });
+
+    // Highlight active link
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+</script>
+
+
+<section class="about-section">
+  <divdiv class="container center team-header">
+    <h2 class="muted team-title">MEET THE TEAM</h2>
   </div>
-</header>
 
-
-<section class="section">
-  <div class="container center" style="margin-bottom:28px">
-    <h2 class="muted" style="letter-spacing:.15em;">MEET THE TEAM</h2>
+  <div class="container center">
+    <img src="images/meet-the-team.webp" alt="" class="team-image">
   </div>
 
-  <div class="container">
-    <img src="images/meet-the-team.jpg" alt="" style="border-radius:18px; box-shadow:var(--shadow); margin-bottom:28px">
-  </div>
-
-  <div class="container center" style="margin-bottom:12px">
+  <div class="container center philosophy-header">
     <h3>Our Philosophy</h3>
   </div>
   <div class="container">
-    <p class="muted center">Every business has a winning formula that brings their success, but every business has the potential to become greater. We at S&amp;F Property Management Solutions believe every business prospect is a gateway to success and building a long-term relationship by keeping it professional.</p>
+    <p class="muted center">Every business has a winning formula that brings their success, but every business has the potential to become greater. We at S&F Property Management Solutions believe that every business prospect is a gateway to success and building a long-term business relationship by keeping it professional.  Our management staff has over 30 years success and experience in various sectors and has the right formula to incorporate into your business.</p>
   </div>
 </section>
 
 <section class="section">
+  <h2 class="muted leadership-title">Our Leadership Team</h2>
   <div class="container team">
     <article class="person">
-      <img src="images/farouk_onia.jpg" alt="Farouk Onia">
+      <img src="images/farouk_onia.webp" alt="Farouk Onia">
       <h4>Farouk Onia</h4>
       <p class="title">Chief Executive Officer</p>
-      <p class="bio">Farouk is a people person and a good judge of character with entrepreneurial skills. From applications to legal requirements — Farouk’s calm attitude gives assurance that your investments are in secure hands.</p>
+      <p class="bio">Farouk Onia is a people person. He's also a good judge of character with entrepreneurial skills makes him the man to go to for all your business acquisitions and property management needs. From applications to facilitations and legal requirements pertaining to your investment. Farouk's calm attitude will give you the assurance that your investments is in secure hands!</p>
+      <p class="bio">Farouk Onia currently serves as Chairman on various organisations.</p>
     </article>
 
     <article class="person">
-      <img src="images/shiraz_onia.jpg" alt="Shiraz Onia">
+      <img src="images/shiraz_onia.webp" alt="Shiraz Onia">
       <h4>Shiraz Onia</h4>
       <p class="title">Managing Director</p>
-      <p class="bio">Shiraz has experience with all types of property — from private homes to commercial. He can help manage sales, maintenance and leasing, and facilitate building projects through to municipal approvals.</p>
+      <p class="bio">Shiraz Onia has experience with all types of property. From private homes, apartments, luxury estates, residential and commercial he knows that your investment is important to you. 
+        He can help you manage anything from property sales, maintenance and leasing to facilitating building projects from inception to municipal approvals.</p>
+      <p class="bio">Shiraz Onia currently serves as Chairman on various organisations.</p>
     </article>
   </div>
 </section>
@@ -200,39 +228,46 @@
 <section class="section">
   <div class="container center">
     <h2 class="muted">WHAT WE DO</h2>
-    <div class="grid-3" style="margin-top:24px">
+    <div class="grid-3 services-grid">
       <article class="card">
         <h3>Property Management</h3>
         <p class="muted">
           We offer a full suite of property management tools to investors, homeowners and landlords. 
-          Let us do the work so you can relax knowing your property is in great hands. 
-          Our goal is to increase occupancy and decrease hassle — we’re experts at finding people who will treat your property and investments right.
+          Let us do the work so you can relax knowing your property is in great hands.
+          Our goal is to increase occupancy and decrease hassle. We're experts at finding people who will treat your property and investments right.
         </p>
       </article>
 
       <article class="card">
         <h3>Subsidiary Services</h3>
         <p class="muted">
-          Through our vast experience we offer a host of additional services as a turnkey solution included in our property management portfolio, 
-          extending to fire, electrical, and plumbing compliance services as part of property refurbishment and maintenance.
+          Through our vast experience we offer a host of additional services as a turn key solution included in our property management 
+          portfolio which extends to fire, electronic, electrical and plumbing compliance services as part of property refurbishment and maintenance.
         </p>
       </article>
 
       <article class="card">
         <h3>Facilitation</h3>
         <p class="muted">
-          We have many years of experience in facilitation and offer services where we can oversee your building project 
-          from inception to municipal approvals.
+          We have many years of experience in facilitation and offer services where we
+          can oversee your building project from inception to municipal approvals.
         </p>
       </article>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">COPYRIGHT © <span id="year"></span> S&amp;F PROPERTY MANAGEMENT SOLUTIONS — ALL RIGHTS RESERVED.</div>
-</footer>
-<script src="js/main.js"></script>
+<div id="footer-placeholder"></div>
+<script>
+  // Load footer dynamically
+  fetch("components/footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+      document.getElementById("year").textContent = new Date().getFullYear();
+    });
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -240,6 +275,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XXXXXXX'); /* Replace with your GA4 ID */
 </script>
+<!-- Cookie Consent Placeholder -->
+<div id="cookie-consent-placeholder"></div>
+
+<!-- Main Script -->
+<script src="js/main.js" defer></script>
 
 </body>
 </html>

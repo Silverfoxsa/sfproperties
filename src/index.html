@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>S&F Property Management Solutions (Pty) Ltd</title>
@@ -11,13 +10,13 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": "Organization", "LocalBusiness"]
         "@id": "https://sfproperties.co.za/#organization",
         "name": "S&F Property Management Solutions (Pty) Ltd",
         "url": "https://sfproperties.co.za/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://sfproperties.co.za/images/logo.svg",
+          "url": "https://sfproperties.co.za/images/s&f-logo.webp",
           "width": 512,
           "height": 180
         },
@@ -59,11 +58,11 @@
         "@type": "LocalBusiness",
         "@id": "https://sfproperties.co.za/#localbusiness",
         "name": "S&F Property Management Solutions (Pty) Ltd",
-        "image": "https://sfproperties.co.za/images/logo.svg",
+        "image": "https://sfproperties.co.za/images/s&f-logo.webp",
         "url": "https://sfproperties.co.za/",
         "telephone": "+27-78-226-4253",
         "email": "info@sfproperties.co.za",
-        "priceRange": "R",
+        "priceRange": "R1000-R10000",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "30 Elwyn Road, Penlyn Estate",
@@ -134,53 +133,88 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="preload" as="image" href="images/sf-worker-hero-1600.webp" type="image/webp">
   <meta name="robots" content="index, follow">
   <meta name="author" content="S&F Property Management Solutions (Pty) Ltd">
   <meta property="og:title" content="Professional Property Management in Cape Town | S&F Property Management">
   <meta property="og:description" content="We specialize in residential, commercial and retail property management, tenant services and property facilitation.">
-  <meta property="og:image" content="https://sfproperties.co.za/images/logo.svg">
+  <meta property="og:image" content="https://sfproperties.co.za/images/sf-logo.webp">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sfproperties.co.za/">
   <meta name="twitter:card" content="summary_large_image">
 
 </head>
 <body>
+  <div id="header-placeholder"></div>
 
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="images/sf-logo.svg" alt="S&F Property Management Solutions (Pty) Ltd Logo"/>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html" class="">About Us</a>
-      <a href="contact.html" class="">Contact Us</a>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">Menu</button>
-  </div>
-</header>
+<script>
+  // Load the header dynamically
+  fetch("components/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header-placeholder").innerHTML = html;
+    });
 
+  // --- Event delegation for the hamburger toggle ---
+      document.addEventListener("click", event => {
+        // If the click was on the hamburger button or its icon
+        if (event.target.closest(".menu-toggle")) {
+          const navBar = document.querySelector(".nav-bar");
+          navBar?.classList.toggle("active");
+        }
+
+    // Optional: close menu after clicking a link
+        if (event.target.closest(".nav-links a")) {
+          document.querySelector(".nav-bar")?.classList.remove("active");
+        }
+      });
+
+    // Highlight active link
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+</script>
 
 <!-- HERO -->
-<section class="hero" aria-label="Hero">
-  <div class="hero-slide active" style="background-image:url('images/cpt-area.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('images/sf-worker-hero.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('images/sf-interior-hero.jpg')"></div>
-  <div class="hero-content container">
+<section class="hero-carousel">
+
+    <source srcset="images/sf-worker-hero-900.webp" media="(max-width: 768px)" type="image/webp">
+    <source srcset="images/sf-worker-hero-1600.webp" type="image/webp">
+    <img src="images/sf-worker-hero-1600.webp" alt="Luxury apartments managed by S&F" width="1600" height="900">
+  </picture>
+  
+  <picture>
+    <source srcset="images/cpt-area-hero-900.webp" media="(max-width: 768px)" type="image/webp">
+    <source srcset="images/cpt-area-hero-1600.webp" type="image/webp">
+    <img src="images/cpt-area-hero-1600.webp" alt="Cape Town skyline" width="1600" height="900" loading="lazy">
+  </picture>
+
+  <picture>
+    <source srcset="images/sf-contract-hero-900.webp" media="(max-width: 768px)" type="image/webp">
+    <source srcset="images/sf-contract-hero-1600.webp" type="image/webp">
+    <img src="images/sf-contract-hero-1600.webp" alt="Property investment solutions" width="1600" height="900" loading="lazy">
+  </picture>
+
+  <div class="hero-text">
     <h1>Professional Property Management</h1>
-    <p>Aspiring greatness through all business channels.</p>
-    <div class="dots" aria-hidden="true">
-      <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
-    </div>
+    <p>Reliable, transparent, and stress-free property management in Cape Town.</p>
+    <a href="contact.html" class="btn-primary">
+      <i class="fa-solid fa-calendar-check"></i> Request Consultation
+    </a>
+    <p class="hero-subtext">We’ll assess your property and send you a custom management plan within 24 hours.</p>
   </div>
 </section>
 
 <!-- OUR EXPERTISE -->
 <section class="section">
   <div class="container center">
-    <h2 class="muted" style="letter-spacing:.15em;">OUR EXPERTISE</h2>
-    <div class="grid-3" style="margin-top:24px">
+    <h2 class="muted section-title">OUR EXPERTISE</h2>
+    <div class="grid-3 expertise-grid">
       <article class="card">
         <h3>Property Management</h3>
         <p class="muted">As your property management company, we deal with tenant issues, collect rent, facilitate maintenance and repairs, and qualify new tenants. You get peace of mind knowing your investment is in good hands.</p>
@@ -200,8 +234,8 @@
 <!-- WHAT WE DO -->
 <section class="section">
   <div class="container center">
-    <h2 class="muted" style="letter-spacing:.15em;">WHAT WE DO</h2>
-    <div class="grid-3" style="margin-top:24px">
+    <h2 class="muted what-we-do-title">WHAT WE DO</h2>
+    <div class="grid-3 what-we-do-grid">
       <article class="card">
         <h3>Property Management</h3>
         <p class="muted">We offer a full suite of property management tools to investors, homeowners and landlords. Let us do the work so you can relax knowing your property is in great hands.</p>
@@ -221,39 +255,43 @@
 <!-- FAQ + Subscribe -->
 <section class="section">
   <div class="container">
-    <div class="cta">
-      <form class="row" onsubmit="event.preventDefault(); alert('Subscribed. Thank you!'); this.reset();">
-        <input type="email" class="input" placeholder="Email Address" required>
-        <button class="btn" type="submit">SIGN UP</button>
-      </form>
-    </div>
-
-    <div class="faq" style="margin:40px auto">
-      <div class="center" style="margin-bottom:8px">
-        <h2 class="muted" style="letter-spacing:.15em;">FREQUENTLY ASKED QUESTIONS</h2>
+    <div class="faq-accordion">
+      <div class="center faq-header">
+        <h2 class="muted faq-title">FREQUENTLY ASKED QUESTIONS</h2>
         <p class="muted">Please contact us if you cannot find an answer to your question.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><h4>Will you find tenants for my property?</h4><span class="chev">▾</span></div>
+        <div class="faq-q"><h4>Will you find tenants for my property?</h4></div>
         <div class="faq-a"><p>Yes. We handle listing, screening, and placement — ensuring qualified tenants and compliant documentation.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><h4>How much will my property lease for?</h4><span class="chev">▾</span></div>
+        <div class="faq-q"><h4>How much will my property lease for?</h4></div>
         <div class="faq-a"><p>We benchmark against current market data in Cape Town and provide a pricing recommendation aligned to your objectives.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><h4>Who handles maintenance calls?</h4><span class="chev">▾</span></div>
+        <div class="faq-q"><h4>Who handles maintenance calls?</h4></div>
         <div class="faq-a"><p>We act as first contact, coordinate contractors, and track job cards to completion, keeping you informed.</p></div>
       </div>
     </div>
   </div>
 </section>
 
+<div id="footer-placeholder"></div>
+<script>
+  // Load footer dynamically
+  fetch("components/footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+      document.getElementById("year").textContent = new Date().getFullYear();
+    });
+</script>
 
-<footer>
-  <div class="container">COPYRIGHT © <span id="year"></span> S&amp;F PROPERTY MANAGEMENT SOLUTIONS — ALL RIGHTS RESERVED.</div>
-</footer>
-<script src="js/main.js"></script>
+<!-- Cookie Consent Placeholder -->
+<div id="cookie-consent-placeholder"></div>
+
+<!-- Main Script -->
+<script src="js/main.js" defer></script>
 
 </body>
 </html>
