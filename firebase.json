@@ -38,6 +38,13 @@
         ]
       }
     ],
+    "redirects": [
+      {
+        "source": "https://sf-properties-86040.web.app/**",
+        "destination": "https://sfproperties.co.za/**",
+        "type": 301
+      }
+    ],
     "rewrites": [
       { "source": "/", "destination": "/index.html" },
       { "source": "/about", "destination": "/about.html" },
